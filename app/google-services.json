@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "720683876141",
+    "firebase_url": "https://haircut-booking-applicat-78c5d-default-rtdb.firebaseio.com",
+    "project_id": "haircut-booking-applicat-78c5d",
+    "storage_bucket": "haircut-booking-applicat-78c5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720683876141:android:5e8f0be6b681ec95e55da4",
+        "android_client_info": {
+          "package_name": "omt.aduc8386.haircutbookingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720683876141-aen8jltm51il75a55otrimi3tqtrd7mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlzAh26W1M3zBYFwvWTPpnfJBDc0vPngo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720683876141-aen8jltm51il75a55otrimi3tqtrd7mm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
