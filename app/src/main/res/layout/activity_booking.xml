@@ -136,8 +136,8 @@
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spn_choose_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="349dp"
+                android:layout_height="56dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_spinner"
                 android:popupBackground="@drawable/bg_spinner_drop_down"

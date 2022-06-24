@@ -7,21 +7,22 @@ class User: Serializable {
 
     var email: String = ""
     var password: String = ""
-    var name: String? = null
+    var name: String = ""
     var address: String? = null
     var gender: String? = null
-    var phoneNumber: String? = null
+    var phoneNumber: String = ""
     var avatar: String? = null
     val id: String = UUID.randomUUID().toString()
+    val barbershopId: String? = null
 
     constructor()
     constructor(
         email: String,
         password: String,
-        name: String?,
+        name: String,
         address: String?,
         gender: String?,
-        phoneNumber: String?,
+        phoneNumber: String,
         avatar: String?
     ) {
         this.email = email
@@ -31,6 +32,13 @@ class User: Serializable {
         this.gender = gender
         this.phoneNumber = phoneNumber
         this.avatar = avatar
+    }
+
+    constructor(email: String, password: String, name: String, phoneNumber: String) {
+        this.email = email
+        this.password = password
+        this.name = name
+        this.phoneNumber = phoneNumber
     }
 
 

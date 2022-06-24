@@ -22,33 +22,45 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener(View.OnClickListener {
-            var email: String = binding.edtUserName.text.toString();
+            var email: String = binding.edtEmail.text.toString();
             var password: String = binding.edtPassword.text.toString();
 
+            if (email.trim().isEmpty()) {
+                Toast.makeText(baseContext, "Email can't be empty", Toast.LENGTH_SHORT).show()
+                return@OnClickListener
+            }
+
+            if (password.trim().isEmpty()) {
+                Toast.makeText(baseContext, "Password can't be empty", Toast.LENGTH_SHORT).show()
+                return@OnClickListener
+            }
+
             accountCheck(email, password)
+        })
+
+        binding.btnSignup.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
         })
     }
 
     private fun accountCheck(email: String, password: String) {
-
         val reference = FirebaseDatabase.getInstance().getReference("users")
 
-        reference.addValueEventListener(object: ValueEventListener{
+        reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(email.trim().isEmpty()) {
-                    Toast.makeText(baseContext, "Email can't be empty", Toast.LENGTH_SHORT).show()
-                    return
-                }
-                if(password.trim().isEmpty()) {
-                    Toast.makeText(baseContext, "Password can't be empty", Toast.LENGTH_SHORT).show()
-                    return
-                }
-
-                for(user in  snapshot.children) {
+                for (user in snapshot.children) {
                     val userGot = user.getValue(User::class.java)
 
-                    if(userGot!!.email == email && userGot.password == password) {
+                    if (userGot!!.email == email && userGot.password == password && userGot.barbershopId == null) {
                         val intent = Intent(baseContext, MainActivity::class.java)
+                        intent.putExtra(MainActivity.USER, userGot)
+                        startActivity(intent)
+                        finish()
+                        return
+                    }
+                    else if(userGot!!.email == email && userGot.password == password && userGot.barbershopId != null) {
+                        val intent = Intent(baseContext, MainAdminActivity::class.java)
                         intent.putExtra(MainActivity.USER, userGot)
                         startActivity(intent)
                         finish()
@@ -56,11 +68,13 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
 
-                Toast.makeText(baseContext, "Incorrect email or password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "Incorrect email or password", Toast.LENGTH_SHORT)
+                    .show()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(baseContext, "No internet connection", Toast.LENGTH_SHORT)
+                    .show()
             }
 
         })

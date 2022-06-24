@@ -29,6 +29,8 @@
         <activity android:name=".controller.activity.BarbershopsActivity"/>
         <activity android:name=".controller.activity.BookingActivity"/>
         <activity android:name=".controller.activity.BookingHistoryActivity"/>
+        <activity android:name=".controller.activity.SignupActivity"/>
+        <activity android:name=".controller.activity.MainAdminActivity"/>
     </application>
 
 </manifest>

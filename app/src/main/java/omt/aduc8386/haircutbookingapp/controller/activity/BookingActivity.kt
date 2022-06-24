@@ -1,5 +1,6 @@
 package omt.aduc8386.haircutbookingapp.controller.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -155,10 +156,13 @@ class BookingActivity : AppCompatActivity() {
                                 }
 
                             })
-
-                            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                         }
                     })
+                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, BookingHistoryActivity::class.java)
+                intent.putExtra(MainActivity.USER, user)
+                startActivity(intent)
+                finish()
             }
         })
 

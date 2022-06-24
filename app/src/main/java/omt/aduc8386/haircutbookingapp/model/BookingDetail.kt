@@ -27,5 +27,9 @@ class BookingDetail {
         this.bookTime = bookTime
     }
 
+    override fun toString(): String {
+        return "BookingDetail(user=$user, barbershop=$barbershop, service=$service, stylist=$stylist, bookTime='$bookTime', isPaid=$isPaid)"
+    }
+
 
 }

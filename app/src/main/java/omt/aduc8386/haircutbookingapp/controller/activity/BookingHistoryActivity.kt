@@ -11,6 +11,7 @@ import com.google.firebase.database.*
 import omt.aduc8386.haircutbookingapp.controller.adapter.BookingHistoryAdapter
 import omt.aduc8386.haircutbookingapp.databinding.ActivityBookingHistoryBinding
 import omt.aduc8386.haircutbookingapp.model.BookingDetail
+import omt.aduc8386.haircutbookingapp.model.User
 
 class BookingHistoryActivity : AppCompatActivity() {
 
@@ -19,13 +20,16 @@ class BookingHistoryActivity : AppCompatActivity() {
 
     private lateinit var bookingHistoryRecyclerView: RecyclerView
 
+    private var user: User? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        bookingHistoryRecyclerView = binding.rvBookingHistory
+        bookingHistoryRecyclerView = binding.rcvBookingHistory
         bookingHistoryRecyclerView.layoutManager = LinearLayoutManager(this)
         reference = FirebaseDatabase.getInstance().getReference("bookings")
+        user = intent.getSerializableExtra(MainActivity.USER) as User
 
         getBookingHistory()
 
@@ -41,7 +45,9 @@ class BookingHistoryActivity : AppCompatActivity() {
 
                 for(bookingDetail in  snapshot.children) {
                     val bookingDetailGot = bookingDetail.getValue(BookingDetail::class.java)
-                    bookings.add(bookingDetailGot!!)
+                    if(bookingDetailGot?.user?.id == user?.id) {
+                        bookings.add(bookingDetailGot!!)
+                    }
                 }
                 showBookingHistory(bookings)
             }
@@ -55,7 +61,5 @@ class BookingHistoryActivity : AppCompatActivity() {
 
     fun showBookingHistory(bookings: ArrayList<BookingDetail>) {
         bookingHistoryRecyclerView.adapter = BookingHistoryAdapter(bookings)
-        bookingHistoryRecyclerView.addItemDecoration(DividerItemDecoration(baseContext, LinearLayoutManager.VERTICAL))
-
     }
 }
