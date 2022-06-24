@@ -55,7 +55,5 @@ class BarbershopsActivity : AppCompatActivity() {
 
     fun showBarbershops(barbershops: ArrayList<Barbershop>) {
         barbershopRecyclerView.adapter = BarbershopAdapter(barbershops)
-        barbershopRecyclerView.addItemDecoration(DividerItemDecoration(baseContext, LinearLayoutManager.VERTICAL))
-
     }
 }

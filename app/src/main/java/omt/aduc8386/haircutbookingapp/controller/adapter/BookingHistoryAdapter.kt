@@ -34,7 +34,7 @@ class BookingHistoryAdapter(private val bookingHistoryList: List<BookingDetail>)
 
         holder.tvBookingTime.text = String.format("Booking time: %s", bookingDetail.bookTime)
         holder.tvBarbershop.text = bookingDetail.barbershop.name
-        holder.tvAddress.text = String.format("Address: %s", bookingDetail.barbershop.address)
+        holder.tvAddress.text = String.format("%s", bookingDetail.barbershop.address)
         holder.tvService.text = String.format("Service: %s", bookingDetail.service.name)
         holder.tvServicePrice.text = String.format("Cost: %,.2f VND", bookingDetail.service.price)
         holder.tvStylist.text = String.format("Stylist: %s", bookingDetail.stylist.name)

@@ -17,7 +17,7 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="26sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -60,7 +60,7 @@
                 android:id="@+id/tv_service"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="6dp"
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -79,7 +79,7 @@
                 android:id="@+id/tv_stylist_name"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="6dp"
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:textSize="18sp"
